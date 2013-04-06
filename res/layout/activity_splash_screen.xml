@@ -1,0 +1,75 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".SplashScreen" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+    <Button
+        android:id="@+id/goplan_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="@string/title_splash"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+  <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" >
+        
+        <LinearLayout
+            android:id="@+id/go_plan_linlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/youAreInTv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:layout_gravity="center"
+                android:keepScreenOn="true"
+                android:text="@string/you_are_in" />
+            
+            <TextView
+                android:id="@+id/locTv"
+                android:layout_width="match_parent"
+       			android:layout_height="50dp"
+        		android:layout_gravity="center"
+        		android:keepScreenOn="true" 
+        		android:layout_weight="2"
+        		android:text="@string/default_loc"
+                />            
+        </LinearLayout>
+
+
+        
+        <AnalogClock
+            android:id="@+id/splashClock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+    </FrameLayout>
+
+</FrameLayout>

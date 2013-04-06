@@ -1,0 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".SplashScreen" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+    <TextView
+        android:id="@+id/citychoicestaticTV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="@string/title_splash"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+    
+      <RelativeLayout
+	      android:layout_width="match_parent"
+	      android:layout_height="match_parent"
+	      android:fitsSystemWindows="true"
+	      android:gravity="left|right" >
+
+          <SeekBar
+              android:id="@+id/costSlider"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@+id/promptCostTv"
+              android:max="1000"
+              android:progress="500"
+              android:layout_marginTop="14dp" />
+
+          <TextView
+              android:id="@+id/minCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/promptCostTv"
+              android:layout_below="@+id/costSlider"
+              android:text="@string/minCost"
+              android:textAppearance="?android:attr/textAppearanceMedium" />
+
+          <TextView
+              android:id="@+id/maxCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignBaseline="@+id/minCostTv"
+              android:layout_alignBottom="@+id/minCostTv"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="22dp"
+              android:text="@string/maxCost"
+              android:textAppearance="?android:attr/textAppearanceMedium" />
+
+          <TextView
+              android:id="@+id/promptPmTimeTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignRight="@+id/promptAmTimeTv"
+              android:layout_below="@+id/amTimePicker"
+              android:layout_marginTop="16dp"
+              android:text="@string/pmTimePrompt" />
+
+          <TimePicker
+              android:id="@+id/amTimePicker"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/promptAmTimeTv"
+              android:layout_toLeftOf="@+id/maxCostTv" />
+
+          <TimePicker
+              android:id="@+id/pmTimePicker"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/amTimePicker"
+              android:layout_below="@+id/promptPmTimeTv" />
+
+          <TextView
+              android:id="@+id/promptAmTimeTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/minCostTv"
+              android:layout_toRightOf="@+id/minCostTv"
+              android:text="@string/amTimePrompt" />
+
+          <Button
+              android:id="@+id/sendButton"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:text="@string/sendButtonText" />
+
+          <TextView
+              android:id="@+id/promptCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_marginTop="23dp"
+              android:layout_toLeftOf="@+id/maxCostTv"
+              android:text="@string/costPrompt" />
+	      
+      </RelativeLayout>
+</FrameLayout>
