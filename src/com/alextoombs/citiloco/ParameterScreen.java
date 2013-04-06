@@ -174,21 +174,21 @@ public class ParameterScreen extends Activity {
 			    List<NameValuePair> getParams = new LinkedList<NameValuePair>();
 
 			    if (lat != 0.0 && lng != 0.0){
-			        getParams.add(new BasicNameValuePair("LAT", String.valueOf(lat)));
-			        getParams.add(new BasicNameValuePair("LON", String.valueOf(lng)));
+			        getParams.add(new BasicNameValuePair("lat", String.valueOf(lat)));
+			        getParams.add(new BasicNameValuePair("lon", String.valueOf(lng)));
 			    }
 			    
 			    // send cost as integer
-			    getParams.add(new BasicNameValuePair("MAX_COST", String.valueOf(costProgress)));
+			    getParams.add(new BasicNameValuePair("cost", String.valueOf(costProgress)));
 			    
 			    // send times as a double
 			    double amTime = amHour + amMinute/60;	
-			    getParams.add(new BasicNameValuePair("START_TIME", String.valueOf(amTime)));
+			    getParams.add(new BasicNameValuePair("start", String.valueOf(amTime)));
 			    double pmTime = amHour + pmMinute/60;
-			    getParams.add(new BasicNameValuePair("END_TIME", String.valueOf(pmTime)));
+			    getParams.add(new BasicNameValuePair("end", String.valueOf(pmTime)));
 
 			    String paramString = URLEncodedUtils.format(getParams, "utf-8");
-			    String url = "http://ec2-54-245-37-80.us-west-2.compute.amazonaws.com/index.php%3Fstart=%3CSTART_TIME%3D%26end=%3CEND_TIME%3D%26cost=%3CMAX_COST%3D%26lat=%3CLAT%3D%26lon=%3CLON%3D";
+			    String url = "http://ec2-54-245-37-80.us-west-2.compute.amazonaws.com/index.php";
 			    url += paramString;
 			    
 			    // actually send the request
