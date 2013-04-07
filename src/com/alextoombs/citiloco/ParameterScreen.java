@@ -233,7 +233,7 @@ public class ParameterScreen extends Activity {
 			    listActivities.putExtra("lng", String.valueOf(lng));
 			    String xmlString = EntityUtils.toString(rsp.getEntity());
 			    listActivities.putExtra("xml", xmlString);
-				
+			    
 				// if null response, send again!
 				if(DEBUG)
 					Log.i(TAG, "Response: " + rsp);

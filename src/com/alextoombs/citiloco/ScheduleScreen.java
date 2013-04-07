@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.alextoombs.cityplan.R;
 
@@ -41,6 +42,12 @@ public class ScheduleScreen extends Activity {
 		
 		lv = (ListView)findViewById(R.id.schedView);
 		
+	    // toast because things are slow.
+    	final String comTxt = "Talking to the server now...  Hang on.";
+    	int duration = Toast.LENGTH_LONG;
+    	Toast toast = Toast.makeText(getApplicationContext(), comTxt, duration);
+    	toast.show();
+		
 		// extras from last activity
 		cityName = getIntent().getStringExtra("cityname");
 		lat = Double.parseDouble(getIntent().getStringExtra("lat"));
@@ -58,8 +65,21 @@ public class ScheduleScreen extends Activity {
 		options = sched.getOptions();
 		
 		// create array adapter and populate with list
-		ArrayAdapter arrAdap = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1);
-        arrAdap.add(options);
-        lv.setAdapter(arrAdap);
+		ArrayAdapter<String> adapter;
+		
+		// put into other list
+		ArrayList<String> arrStr = new ArrayList<String>();
+		for(Option opt : options) {
+			arrStr.add("Destination:  " + opt.getLocations().get(0).getName() + ", costs about: $" + opt.getLocations().get(0).getPrice());
+		}
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrStr);
+        lv.setAdapter(adapter);
+        
+        if(DEBUG) {
+        	Log.i(TAG,"ArrayList items:");
+        	for(Option opt : options) {
+        		Log.i(TAG, opt.toString());
+        	}
+        }
 	}
 }
