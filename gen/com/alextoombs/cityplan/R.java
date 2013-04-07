@@ -185,10 +185,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int areYouTv=0x7f070006;
         public static final int ccLocTv=0x7f070007;
         public static final int costSlider=0x7f070010;
-        public static final int gmapsButton=0x7f070016;
+        public static final int gmapsButton=0x7f070017;
         public static final int go_plan_linlayout=0x7f070001;
         public static final int goplan_button=0x7f070000;
         public static final int locTv=0x7f070003;
+        public static final int mapview=0x7f070015;
         public static final int maxCostTv=0x7f070012;
         public static final int minCostTv=0x7f07000e;
         public static final int planCityButton=0x7f070009;
@@ -196,7 +197,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int promptAmTimeTv=0x7f07000d;
         public static final int promptCostTv=0x7f070011;
         public static final int promptPmTimeTv=0x7f07000c;
-        public static final int schedView=0x7f070015;
+        public static final int schedView=0x7f070016;
         public static final int sendButton=0x7f07000f;
         public static final int splashClock=0x7f070004;
         public static final int thisCityButton=0x7f070008;
@@ -209,7 +210,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_splash_screen=0x7f030000;
         public static final int city_choice_screen=0x7f030001;
         public static final int parameter_screen=0x7f030002;
-        public static final int schedule_screen=0x7f030003;
+        public static final int plot=0x7f030003;
+        public static final int schedule_screen=0x7f030004;
     }
     public static final class string {
         public static final int amTimePrompt=0x7f05000e;

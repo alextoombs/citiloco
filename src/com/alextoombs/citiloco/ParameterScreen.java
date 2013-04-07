@@ -163,6 +163,12 @@ public class ParameterScreen extends Activity {
 		// Button to send values to server
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){ 
+        	    // toast because things are slow.
+            	final String comTxt = "Talking to the server now...  Hang on.";
+            	int duration = Toast.LENGTH_LONG;
+            	Toast toast = Toast.makeText(getApplicationContext(), comTxt, duration);
+            	toast.show();
+            	
             	if(DEBUG)
             		Log.i(TAG,"Sending value to server for calculations");
             	

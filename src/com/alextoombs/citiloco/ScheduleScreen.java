@@ -42,12 +42,6 @@ public class ScheduleScreen extends Activity {
 		
 		lv = (ListView)findViewById(R.id.schedView);
 		
-	    // toast because things are slow.
-    	final String comTxt = "Talking to the server now...  Hang on.";
-    	int duration = Toast.LENGTH_LONG;
-    	Toast toast = Toast.makeText(getApplicationContext(), comTxt, duration);
-    	toast.show();
-		
 		// extras from last activity
 		cityName = getIntent().getStringExtra("cityname");
 		lat = Double.parseDouble(getIntent().getStringExtra("lat"));
@@ -78,7 +72,7 @@ public class ScheduleScreen extends Activity {
         if(DEBUG) {
         	Log.i(TAG,"ArrayList items:");
         	for(Option opt : options) {
-        		Log.i(TAG, opt.toString());
+        		Log.i(TAG, opt.getLocations().get(0).getName());
         	}
         }
 	}
