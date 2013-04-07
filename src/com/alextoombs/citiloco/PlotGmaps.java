@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -21,6 +20,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 /**This class plots lat/long data onto a google map to track where photos were taken. 
  * 
@@ -82,35 +82,45 @@ public class PlotGmaps extends Activity implements OnMapClickListener {
 		
 		// toast for user action
 		Toast.makeText(getApplicationContext(), "Tap points to see details about your route.", Toast.LENGTH_LONG).show();
-        
-        // add map marker as a drawable resource; check to make sure it's a PNG (other formats return null)
-        Drawable drawable = this.getResources().getDrawable(R.drawable.mapmarker);
-        if(DEBUG) {
-        	if(drawable==null)
-        		Log.i(TAG, "Drawable is null.  NPE inc");
-        }
         getPoints();
         
         // add mapmarker with special icon for user's current location
         myMap.addMarker(new MarkerOptions().position(userPoint).title("You Are Here")
-        		.snippet("This is you.  Try tapping on other plots.")
-        		.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker2)));
+        		.snippet("This is you.  Try tapping on other plots.  Follow the blue line.")
+        		.icon(BitmapDescriptorFactory.fromResource(R.drawable.greenpin)));
+        
+        // setup for drawing blue lines through route
+        ArrayList<LatLng> allPts = new ArrayList<LatLng>();
+        allPts.add(userPoint); // adds initial point
         
         // iterate through arraylist of latlngs and drop mapmarkers at eah
         int k = 0;
         for(LatLng laln : plotPoints) {
+        	allPts.add(plotPoints.get(k));
+        	
         	myMap.addMarker(new MarkerOptions()
         			.position(laln).title(plotStamps.get(k))
         			.snippet("Price: $" + plotPrices.get(k)).icon(BitmapDescriptorFactory
-                    .fromResource(R.drawable.mapmarker)));
+                    .fromResource(R.drawable.redpin)));
         	k = k + 1;
+        }
+        
+        // draw blue lines between points along route
+        final int numPts = allPts.size();
+        for(int q = 0; q < numPts-1; q++) {
+        	myMap.addPolyline(new PolylineOptions()
+        							.add(allPts.get(q), allPts.get(q+1))
+        							.width(5)
+        							.color(0x7F0000FF));
         }
         
         // debugging stuff
         if(DEBUG) {
         	Log.i(TAG, "Plots Count: " + plotCount);
         	for(int j = 0; j < plotCount; j++) {
-        		Log.i(TAG, "Plotting geopoint: " + plotPoints.get(j).toString() + ", location: " + plotStamps.get(j).toString());
+        		Log.i(TAG, "Plotting geopoint: " + plotPoints.get(j).toString() + 
+        				", location: " + plotStamps.get(j).toString() + 
+        				", price: " + plotPrices.get(j).toString());
         	}
         }  
     }
@@ -138,50 +148,12 @@ public class PlotGmaps extends Activity implements OnMapClickListener {
 		}
     }
     
-/*    *//**Return a geopoint from a coordinate. 
-     * CODE IS DEPRECATED WITH Google Maps API v2
-     *//*
-    private GeoPoint getPoint(Double lat, Double lon) {
-        return(new GeoPoint((int)(lat*1000000.0), (int)(lon*1000000.0)));
-    }*/
-    
     @Override
     public void onMapClick(LatLng point) {
     	if(DEBUG)
     		Log.i(TAG, "Point string: " + point.toString());
     	myMap.animateCamera(CameraUpdateFactory.newLatLng(point));
     }
-    
-  /*  *//**Convert a string latitude or longitude to float degrees. 
-     * CODE IS DEPRECATED WITH Google Maps API v2
-     *//*
-    private Float convertToDegree(String stringDMS){
-		 Float result = null;
-		 if(DEBUG)
-			 Log.i(TAG, "StringDMS: " + stringDMS);
-		 String[] DMS = stringDMS.split(",", 3);
-		 if(DEBUG)
-			 Log.i(TAG, "STringDMS[]: " + DMS);
-		
-		 String[] stringD = DMS[0].split("/", 2);
-		 Double D0 = Double.valueOf(stringD[0]);
-		 Double D1 = Double.valueOf(stringD[1]);
-		 Double FloatD = D0/D1;
-		
-		 String[] stringM = DMS[1].split("/", 2);
-		 Double M0 = Double.valueOf(stringM[0]);
-		 Double M1 = Double.valueOf(stringM[1]);
-		 Double FloatM = M0/M1;
-		  
-		 String[] stringS = DMS[2].split("/", 2);
-		 Double S0 = Double.valueOf(stringS[0]);
-		 Double S1 = Double.valueOf(stringS[1]);
-		 Double FloatS = S0/S1;
-		  
-		 result = new Float(FloatD + (FloatM/60) + (FloatS/3600));
-		  
-		 return result;
-    };*/
     
     @Override
     protected void onResume() {

@@ -2,7 +2,7 @@
 <resources>
 
  <!--    Splash Screen Strings -->
-    <string name="app_name">citiloco</string>
+    <string name="app_name">Citiloco</string>
     <string name="title_button">ND Startup Weekend</string>
     <string name="title_splash">citiloco</string>
     <string name="goplan_button">What to do Here?</string>
@@ -19,7 +19,7 @@
 <!-- 	Parameter Entry Screen Strings -->
 	<string name="costPrompt">How much do you want to spend?</string>
 	<string name="minCost">$0</string>
-	<string name="maxCost">$1000</string>
+	<string name="maxCost">$100</string>
 	<string name="amTimePrompt">When are you arriving?</string>
 	<string name="pmTimePrompt">When are you leaving?</string>
 	<string name="sendButtonText">Plan Your Trip!</string>

@@ -11,16 +11,7 @@
          TextureView, etc.
     -->
 
-    <Button
-        android:id="@+id/goplan_button"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/title_splash"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+	
 
     <!--
          This FrameLayout insets its children based on system windows using
@@ -61,21 +52,13 @@
                 android:text="@string/default_loc" />
         </LinearLayout>
 
-        <AnalogClock
-            android:id="@+id/splashClock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/go_plan_linlayout" />
-
-        <TextView
-            android:id="@+id/travHardTV"
+        <ImageButton
+            android:id="@+id/goplan_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/splashClock"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
-            android:text="@string/trav_hard" />
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/go_plan_linlayout"
+            android:src="@drawable/logosplash" />
 
     </RelativeLayout>
 

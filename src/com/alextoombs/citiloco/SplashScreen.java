@@ -14,7 +14,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +46,7 @@ public class SplashScreen extends Activity {
 			Log.i(TAG, "Splash Screen Activity created");
 		
 		// objects
-		final Button goPlanButton = (Button)findViewById(R.id.goplan_button);
+		final ImageButton goPlanButton = (ImageButton)findViewById(R.id.goplan_button);
 		lmgr=(LocationManager)getSystemService(LOCATION_SERVICE);
 		locTv = (TextView)findViewById(R.id.locTv);
 
