@@ -141,6 +141,12 @@ public class SplashScreen extends Activity {
 	                                3600000, 1000,
 	                                onLocationChange);
 	  
+	 // show toast to prompt user to tap
+	  final String promptTxt = "Got your city!  Tap anywhere to continue.";
+	  int duration = Toast.LENGTH_LONG;
+	  Toast toast = Toast.makeText(getApplicationContext(), promptTxt, duration);
+	  toast.show();
+	  
 	  locTv.setText(getCityName(location));
 	  currentLoc = location;
 	  if(DEBUG)

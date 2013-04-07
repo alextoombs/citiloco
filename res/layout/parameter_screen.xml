@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
         android:src="@drawable/background3" />
         
         <RelativeLayout
@@ -31,15 +32,6 @@
               android:layout_height="wrap_content"
               android:layout_alignLeft="@+id/amTimePicker"
               android:layout_below="@+id/promptPmTimeTv" />
-
-          <TextView
-              android:id="@+id/promptAmTimeTv"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_below="@+id/minCostTv"
-              android:layout_toRightOf="@+id/minCostTv"
-              android:text="@string/amTimePrompt" 
-              android:textColor="@color/White"/>
 
           <Button
               android:id="@+id/sendButton"
@@ -117,11 +109,20 @@
               android:textColor="@color/White" />
 
           <TextView
+              android:id="@+id/promptAmTimeTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/amTimePicker"
+              android:layout_below="@+id/minCostTv"
+              android:text="@string/amTimePrompt"
+              android:textColor="@color/White" />
+
+          <TextView
               android:id="@+id/promptCostTv"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentTop="true"
-              android:layout_marginTop="24dp"
+              android:layout_marginTop="14dp"
               android:layout_toLeftOf="@+id/maxCostTv"
               android:text="@string/costPrompt"
               android:textColor="@color/White" />
