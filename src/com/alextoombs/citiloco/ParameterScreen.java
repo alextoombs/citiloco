@@ -17,6 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -169,7 +170,7 @@ public class ParameterScreen extends Activity {
             	if(DEBUG)
             		Log.i(TAG, "Trying to communicate with server now");
             	serverGet.execute((Void) null);
-            
+            		
             	if(DEBUG) {
             		try {
             			Log.i(TAG, "Connection successful.  Response: " + rsp);
@@ -220,6 +221,35 @@ public class ParameterScreen extends Activity {
 			    // actually send the request
 			    request.setURI(new URI(url));
 			    response = client.execute(request);
+			    
+			    // create new activity from this one, and add the extras of current loc onto it
+			    Intent listActivities = new Intent(ParameterScreen.this, ScheduleScreen.class);
+			    listActivities.putExtra("cityname", cityName);
+			    listActivities.putExtra("lat", String.valueOf(lat));
+			    listActivities.putExtra("lng", String.valueOf(lng));
+			    
+				// stores http response
+				rsp = response;
+				
+				// if null response, send again!
+				if(DEBUG)
+					Log.i(TAG, "Response: " + rsp);
+/*				if(rsp==null) {
+					try {
+						if(DEBUG)
+							Log.i(TAG,"null response, trying again...");
+						final int sleepDur = 10000;
+						Thread th = new Thread();
+						th.sleep(sleepDur);
+						
+					} catch(InterruptedException e) {
+						e.printStackTrace();
+						Log.e(TAG, "Interrupted Exception on sleeping: " + e.toString());
+					}
+				    response = client.execute(request);
+				}*/
+				// actually start the activity here
+			    startActivity(listActivities);
 			} catch (URISyntaxException e) {
 				Log.e(TAG, "URISyntaxException: " + e.toString());
 			    e.printStackTrace();
@@ -232,8 +262,6 @@ public class ParameterScreen extends Activity {
 				Log.i(TAG, "IOException: " + e.toString());
 			    e.printStackTrace();
 			}   
-			// stores http response
-			rsp = response;
 			return null;
 		}
 	}

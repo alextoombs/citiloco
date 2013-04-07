@@ -207,6 +207,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_splash_screen=0x7f030000;
         public static final int city_choice_screen=0x7f030001;
         public static final int parameter_screen=0x7f030002;
+        public static final int schedule_screen=0x7f030003;
     }
     public static final class string {
         public static final int amTimePrompt=0x7f05000e;

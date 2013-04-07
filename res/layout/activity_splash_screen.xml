@@ -65,16 +65,16 @@
             android:id="@+id/splashClock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/go_plan_linlayout" />
 
         <TextView
             android:id="@+id/travHardTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/splashClock"
+            android:layout_below="@+id/splashClock"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="21dp"
+            android:layout_marginTop="56dp"
             android:text="@string/trav_hard" />
 
     </RelativeLayout>
