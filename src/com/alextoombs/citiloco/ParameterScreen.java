@@ -3,6 +3,7 @@ package com.alextoombs.citiloco;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 import android.widget.Toast;
@@ -72,6 +74,8 @@ public class ParameterScreen extends Activity {
 		final TimePicker pmTimePicker = (TimePicker)findViewById(R.id.pmTimePicker);
 		final Button sendButton = (Button)findViewById(R.id.sendButton);
 		
+		final TextView totTv = (TextView)findViewById(R.id.totTv);
+		
 		// listener for costSlider to obtain total cost
 		costSlider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 		    @Override
@@ -96,19 +100,41 @@ public class ParameterScreen extends Activity {
 		    }
 		});
 		        
-		// timepicker listener for am
+		// timepicker listener for am.  update times, update display.
 		amTimePicker.setOnTimeChangedListener(new OnTimeChangedListener() {
 			public void onTimeChanged (TimePicker view, int hourOfDay, int minute) {
 				view.setCurrentHour(hourOfDay);
 				view.setCurrentMinute(minute);
+				
+				amHour = amTimePicker.getCurrentHour();
+				amMinute = amTimePicker.getCurrentMinute();
+				
+				// set text view to time diff
+				double timeDiff = (pmHour + pmMinute/60.0) - (amHour + amMinute/60.0);
+				
+				if(timeDiff < 0)
+					timeDiff = timeDiff + 24;
+				String df = new DecimalFormat("##.#").format(timeDiff);	
+				totTv.setText(df + " hr");
 			}
 		});
 		
-		// timepicker listener for pm
+		// timepicker listener for pm.  update times, update display.
 		pmTimePicker.setOnTimeChangedListener(new OnTimeChangedListener() {
 			public void onTimeChanged (TimePicker view, int hourOfDay, int minute) {
 				view.setCurrentHour(hourOfDay);
 				view.setCurrentMinute(minute);
+				
+				pmHour = pmTimePicker.getCurrentHour();
+				pmMinute = pmTimePicker.getCurrentMinute();
+				
+				// set text view to time diff
+				double timeDiff = (pmHour + pmMinute/60.0) - (amHour + amMinute/60.0);
+				
+				if(timeDiff < 0)
+					timeDiff = timeDiff + 24;
+				String df = new DecimalFormat("##.#").format(timeDiff);	
+				totTv.setText(df + " hr");
 			}
 		});
 		
@@ -143,6 +169,7 @@ public class ParameterScreen extends Activity {
             	if(DEBUG)
             		Log.i(TAG, "Trying to communicate with server now");
             	serverGet.execute((Void) null);
+            
             	if(DEBUG) {
             		try {
             			Log.i(TAG, "Connection successful.  Response: " + rsp);
@@ -159,7 +186,6 @@ public class ParameterScreen extends Activity {
 	 * @author Alex Toombs
 	 * @date 4/6/2013
 	 * @version 1.0
-	 *
 	 */
 	private class ServerSend extends AsyncTask<Void, Void, Void> {
 		protected Void doInBackground(Void... params) {
@@ -172,23 +198,23 @@ public class ParameterScreen extends Activity {
 			    
 			    // load values into HttpGet request
 			    List<NameValuePair> getParams = new LinkedList<NameValuePair>();
-
-			    if (lat != 0.0 && lng != 0.0){
-			        getParams.add(new BasicNameValuePair("lat", String.valueOf(lat)));
-			        getParams.add(new BasicNameValuePair("lon", String.valueOf(lng)));
-			    }
-			    
-			    // send cost as integer
-			    getParams.add(new BasicNameValuePair("cost", String.valueOf(costProgress)));
 			    
 			    // send times as a double
 			    double amTime = amHour + amMinute/60;	
 			    getParams.add(new BasicNameValuePair("start", String.valueOf(amTime)));
 			    double pmTime = amHour + pmMinute/60;
 			    getParams.add(new BasicNameValuePair("end", String.valueOf(pmTime)));
+			    
+			    // send cost as integer
+			    getParams.add(new BasicNameValuePair("cost", String.valueOf(costProgress)));
+
+			    if (lat != 0.0 && lng != 0.0){
+			        getParams.add(new BasicNameValuePair("lat", String.valueOf(lat)));
+			        getParams.add(new BasicNameValuePair("lon", String.valueOf(lng)));
+			    }
 
 			    String paramString = URLEncodedUtils.format(getParams, "utf-8");
-			    String url = "http://ec2-54-245-37-80.us-west-2.compute.amazonaws.com/index.php";
+			    String url = "http://ec2-54-245-37-80.us-west-2.compute.amazonaws.com/index.php?";
 			    url += paramString;
 			    
 			    // actually send the request
@@ -206,6 +232,7 @@ public class ParameterScreen extends Activity {
 				Log.i(TAG, "IOException: " + e.toString());
 			    e.printStackTrace();
 			}   
+			// stores http response
 			rsp = response;
 			return null;
 		}

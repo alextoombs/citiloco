@@ -72,6 +72,5 @@ public class CityChoiceScreen extends Activity {
             	toast.show();
             }
         });
-	}
-	
+	}	
 }

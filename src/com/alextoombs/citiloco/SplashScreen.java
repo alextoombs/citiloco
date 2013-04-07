@@ -59,7 +59,7 @@ public class SplashScreen extends Activity {
 			toast.show();
 		}
 		else {
-        	final String gpsTxt = "No GPS Signal!  Try going outside.";
+        	final String gpsTxt = "Trying to get your location-- hang on.";
         	int duration = Toast.LENGTH_SHORT;
         	Toast toast = Toast.makeText(getApplicationContext(), gpsTxt, duration);
         	toast.show();
@@ -68,8 +68,6 @@ public class SplashScreen extends Activity {
 		// Button to go to planning activity
         goPlanButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){ 
-            	if(DEBUG)
-            		Log.i(TAG,"Button pressed");
             	Intent goToChoice = new Intent(SplashScreen.this, CityChoiceScreen.class);
             	
             	// If app is still looking for GPS, don't go to next activity.  Instead, prompt user to go outside
@@ -87,7 +85,7 @@ public class SplashScreen extends Activity {
             		if(DEBUG)
             			Log.i(TAG, "No city given yet, waiting for GPS signal");
             			
-                	final String gpsTxt = "No GPS Signal!  Try going outside.";
+                	final String gpsTxt = "No GPS yet-- try going outside.";
                 	int duration = Toast.LENGTH_SHORT;
                 	
                 	Toast toast = Toast.makeText(getApplicationContext(), gpsTxt, duration);

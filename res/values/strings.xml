@@ -8,6 +8,7 @@
     <string name="goplan_button">What to do Here?</string>
     <string name="you_are_in">You are now:</string>
     <string name="default_loc">Waiting for GPS</string>
+    <string name="trav_hard">because traveling is tough.</string>
     
 <!--     City Choice Screen Strings -->
 	<string name="we_think">We think you are:</string>
@@ -22,5 +23,7 @@
 	<string name="amTimePrompt">When are you arriving?</string>
 	<string name="pmTimePrompt">When are you leaving?</string>
 	<string name="sendButtonText">Plan Your Trip!</string>
+	<string name="tot_static">Total time:</string>
+	<string name="tot_dyn">14.85 hr</string>
 
 </resources>

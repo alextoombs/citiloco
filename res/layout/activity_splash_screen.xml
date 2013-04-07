@@ -27,11 +27,12 @@
          android:fitsSystemWindows.
     -->
 
-  <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:fitsSystemWindows="true" >
-        
+
         <LinearLayout
             android:id="@+id/go_plan_linlayout"
             android:layout_width="match_parent"
@@ -39,37 +40,43 @@
             android:layout_gravity="bottom|center_horizontal"
             android:background="@color/black_overlay"
             android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            tools:ignore="UselessParent" >
 
             <TextView
                 android:id="@+id/youAreInTv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_weight="3"
                 android:layout_gravity="center"
+                android:layout_weight="3"
                 android:keepScreenOn="true"
                 android:text="@string/you_are_in" />
-            
+
             <TextView
                 android:id="@+id/locTv"
                 android:layout_width="match_parent"
-       			android:layout_height="50dp"
-        		android:layout_gravity="center"
-        		android:keepScreenOn="true" 
-        		android:layout_weight="2"
-        		android:text="@string/default_loc"
-                />            
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:keepScreenOn="true"
+                android:text="@string/default_loc" />
         </LinearLayout>
 
-
-        
         <AnalogClock
             android:id="@+id/splashClock"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
 
+        <TextView
+            android:id="@+id/travHardTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/splashClock"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="21dp"
+            android:text="@string/trav_hard" />
 
-
-    </FrameLayout>
+    </RelativeLayout>
 
 </FrameLayout>
