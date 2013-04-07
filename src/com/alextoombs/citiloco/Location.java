@@ -1,4 +1,12 @@
+package com.alextoombs.citiloco;
 
+/**
+ * Part of the Citiloco app.
+ * @author Shane MacQuillan
+ * @date 4/6/2013
+ * @version 1.0
+ *
+ */
 public class Location {
 	
 	private String name;

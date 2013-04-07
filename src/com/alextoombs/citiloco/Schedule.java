@@ -1,3 +1,5 @@
+package com.alextoombs.citiloco;
+
 import java.io.StringReader;
 import java.util.ArrayList;
 
@@ -10,7 +12,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-
+/**
+ * Part of the Citiloco app.
+ * @author Shane MacQuillan
+ * @date 4/6/2013
+ * @version 1.0
+ *
+ */
 public class Schedule {
 	
 	private ArrayList<Option> options;

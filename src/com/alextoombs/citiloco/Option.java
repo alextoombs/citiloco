@@ -1,6 +1,14 @@
+package com.alextoombs.citiloco;
+
 import java.util.ArrayList;
 
-
+/**
+ * Part of the Citiloco app.
+ * @author Shane MacQuillan
+ * @date 4/6/2013
+ * @version 1.0
+ *
+ */
 public class Option {
 	
 	private ArrayList<Location> locations;
