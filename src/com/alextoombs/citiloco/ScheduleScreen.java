@@ -3,11 +3,13 @@ package com.alextoombs.citiloco;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.alextoombs.cityplan.R;
 
@@ -20,7 +22,7 @@ import com.alextoombs.cityplan.R;
 public class ScheduleScreen extends Activity {
 	private static final boolean DEBUG = SplashScreen.DEBUG;
 	private static final String TAG = SplashScreen.TAG;
-	
+
 	// initialize variables for extras from intent
 	String cityName = null;
 	double lat = 0;
@@ -31,6 +33,7 @@ public class ScheduleScreen extends Activity {
 	private Schedule sched;
 	private ListView lv;
 	private ArrayList<Option> options;
+	private Button gmapsButton;
 	
 	// on create function of activity
 	@Override
@@ -41,6 +44,7 @@ public class ScheduleScreen extends Activity {
 			Log.i(TAG, "Schedule Screen Activity created");
 		
 		lv = (ListView)findViewById(R.id.schedView);
+		gmapsButton = (Button)findViewById(R.id.gmapsButton);
 		
 		// extras from last activity
 		cityName = getIntent().getStringExtra("cityname");
@@ -75,5 +79,33 @@ public class ScheduleScreen extends Activity {
         		Log.i(TAG, opt.getLocations().get(0).getName());
         	}
         }
+        
+        // onClick listener for gmaps plot button
+        gmapsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){ 
+            	Intent i = new Intent(ScheduleScreen.this, PlotGmaps.class);
+            	
+            	int j = 0;
+            	// iterate through all options, key up and iterate along the arraylist
+            	for(Option opt : options) {
+            		i.putExtra(j + "name",opt.getLocations().get(0).getName());
+            		i.putExtra(j + "lat", opt.getLocations().get(0).getLatitude());
+            		i.putExtra(j + "lng", opt.getLocations().get(0).getLongtitude());
+            		j = j+1;
+            	}
+            	i.putExtra("tot", j);
+            	
+            	// start next activity
+            	startActivity(i);
+            }
+        });
+	}
+	
+	/**
+	 * Accessor for arraylist of options
+	 * @return ArrayList of options
+	 */
+	public ArrayList<Option> getOptions() {
+		return options;
 	}
 }

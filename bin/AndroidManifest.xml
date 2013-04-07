@@ -17,6 +17,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <uses-library android:name="com.google.android.maps"/>
+        
         <activity
             android:name="com.alextoombs.citiloco.SplashScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -62,6 +65,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>   
+        
+        <activity android:name="com.alextoombs.citiloco.PlotGmaps" android:label="@string/gmaps_title"
+    	 	android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
     </application>
 
 </manifest>
