@@ -185,6 +185,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int areYouTv=0x7f070006;
         public static final int ccLocTv=0x7f070007;
         public static final int costSlider=0x7f070010;
+        public static final int gmapsButton=0x7f070016;
         public static final int go_plan_linlayout=0x7f070001;
         public static final int goplan_button=0x7f070000;
         public static final int locTv=0x7f070003;
@@ -195,6 +196,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int promptAmTimeTv=0x7f07000d;
         public static final int promptCostTv=0x7f070011;
         public static final int promptPmTimeTv=0x7f07000c;
+        public static final int schedView=0x7f070015;
         public static final int sendButton=0x7f07000f;
         public static final int splashClock=0x7f070004;
         public static final int thisCityButton=0x7f070008;
@@ -219,6 +221,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          */
         public static final int costPrompt=0x7f05000b;
         public static final int default_loc=0x7f050005;
+        /**  	Schedule Screen Strings 
+         */
+        public static final int gmaps_title=0x7f050013;
         public static final int goplan_button=0x7f050003;
         public static final int maxCost=0x7f05000d;
         public static final int minCost=0x7f05000c;

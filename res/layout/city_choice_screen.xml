@@ -52,7 +52,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentTop="true"
           android:layout_centerHorizontal="true"
-          android:layout_marginTop="30dp"
+          android:layout_marginTop="50dp"
           android:text="@string/default_loc"
           android:textSize="16sp" />
 

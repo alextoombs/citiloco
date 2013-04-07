@@ -25,5 +25,8 @@
 	<string name="sendButtonText">Plan Your Trip!</string>
 	<string name="tot_static">Total time:</string>
 	<string name="tot_dyn">14.85 hr</string>
+	
+<!-- 	Schedule Screen Strings -->
+	<string name="gmaps_title">Plot on Google Maps</string>
 
 </resources>

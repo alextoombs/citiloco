@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/splashClock"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="70dp"
             android:text="@string/trav_hard" />
 
     </RelativeLayout>

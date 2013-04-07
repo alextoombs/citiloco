@@ -63,4 +63,12 @@ public class Schedule {
 	    return "";
 	}
 	
+	/**
+	 * Accessor method for the ArrayList of options.
+	 * @return options ArrayList of option objects for listview
+	 */
+	public ArrayList<Option> getOptions() {
+		return options;
+	}
+	
 }

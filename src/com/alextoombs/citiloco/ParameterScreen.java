@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -221,15 +222,17 @@ public class ParameterScreen extends Activity {
 			    // actually send the request
 			    request.setURI(new URI(url));
 			    response = client.execute(request);
+
+				// stores http response
+				rsp = response;
 			    
 			    // create new activity from this one, and add the extras of current loc onto it
 			    Intent listActivities = new Intent(ParameterScreen.this, ScheduleScreen.class);
 			    listActivities.putExtra("cityname", cityName);
 			    listActivities.putExtra("lat", String.valueOf(lat));
 			    listActivities.putExtra("lng", String.valueOf(lng));
-			    
-				// stores http response
-				rsp = response;
+			    String xmlString = EntityUtils.toString(rsp.getEntity());
+			    listActivities.putExtra("xml", xmlString);
 				
 				// if null response, send again!
 				if(DEBUG)
