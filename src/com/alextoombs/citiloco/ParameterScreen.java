@@ -84,7 +84,7 @@ public class ParameterScreen extends Activity {
 		    public void onStopTrackingTouch(SeekBar seekBar) {
 		        // TODO Auto-generated method stub
 		    	   // toast with value
-		        Toast.makeText(getApplicationContext(), "Your Selected Cost:  $" + costProgress, Toast.LENGTH_SHORT).show();
+		        Toast.makeText(getApplicationContext(), "You want to spend:  $" + costProgress, Toast.LENGTH_SHORT).show();
 		    }
 
 		    @Override
@@ -164,7 +164,7 @@ public class ParameterScreen extends Activity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){ 
         	    // toast because things are slow.
-            	final String comTxt = "Talking to the server now...  Hang on.";
+            	final String comTxt = "Planning your awesome trip...  Hang on.";
             	int duration = Toast.LENGTH_LONG;
             	Toast toast = Toast.makeText(getApplicationContext(), comTxt, duration);
             	toast.show();
@@ -210,7 +210,7 @@ public class ParameterScreen extends Activity {
 			    // send times as a double
 			    double amTime = amHour + amMinute/60;	
 			    getParams.add(new BasicNameValuePair("start", String.valueOf(amTime)));
-			    double pmTime = amHour + pmMinute/60;
+			    double pmTime = pmHour + pmMinute/60;
 			    getParams.add(new BasicNameValuePair("end", String.valueOf(pmTime)));
 			    
 			    // send cost as integer
@@ -225,6 +225,9 @@ public class ParameterScreen extends Activity {
 			    String url = "http://ec2-54-245-37-80.us-west-2.compute.amazonaws.com/index.php?";
 			    url += paramString;
 			    
+			    if(DEBUG)
+			    	Log.i(TAG, "URL: " + url);
+			    	
 			    // actually send the request
 			    request.setURI(new URI(url));
 			    response = client.execute(request);

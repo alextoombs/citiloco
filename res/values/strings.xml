@@ -7,7 +7,7 @@
     <string name="title_splash">citiloco</string>
     <string name="goplan_button">What to do Here?</string>
     <string name="you_are_in">You are now:</string>
-    <string name="default_loc">Waiting for GPS</string>
+    <string name="default_loc">Waiting&#x2014; hang tight.</string>
     <string name="trav_hard">because traveling is tough.</string>
     
 <!--     City Choice Screen Strings -->

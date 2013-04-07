@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/DarkGray"
     tools:context=".SplashScreen" >
 
     <!--
@@ -18,10 +18,17 @@
          android:fitsSystemWindows.
     -->
 
+    <ImageButton
+        android:id="@+id/goplan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/background" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:fitsSystemWindows="true" >
 
         <LinearLayout
@@ -40,6 +47,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="3"
                 android:keepScreenOn="true"
+                android:textColor="@color/White"
                 android:text="@string/you_are_in" />
 
             <TextView
@@ -49,17 +57,20 @@
                 android:layout_gravity="center"
                 android:layout_weight="2"
                 android:keepScreenOn="true"
+                android:textColor="@color/White"
                 android:text="@string/default_loc" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/goplan_button"
+        <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/go_plan_linlayout"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="65dp"
             android:src="@drawable/logosplash" />
 
     </RelativeLayout>
+
 
 </FrameLayout>

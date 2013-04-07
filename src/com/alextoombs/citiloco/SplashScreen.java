@@ -51,7 +51,7 @@ public class SplashScreen extends Activity {
 		locTv = (TextView)findViewById(R.id.locTv);
 
 		// if signal found, continue prompt.  Else, prompt to look for service
-		if(!locTv.getText().toString().contains("GPS")) {
+		if(!locTv.getText().toString().contains("hang")) {
 			// show toast to prompt user to tap
 			final String promptTxt = "Signal Found! Tap Anywhere to Continue";
 			int duration = Toast.LENGTH_LONG;
@@ -71,7 +71,7 @@ public class SplashScreen extends Activity {
             	Intent goToChoice = new Intent(SplashScreen.this, CityChoiceScreen.class);
             	
             	// If app is still looking for GPS, don't go to next activity.  Instead, prompt user to go outside
-            	if(!locTv.getText().toString().contains("GPS")) {
+            	if(!locTv.getText().toString().contains("hang")) {
             		// Add extra info to intent
             		goToChoice.putExtra("cityname", bcity.getName());
             		goToChoice.putExtra("lat", String.valueOf(bcity.getLat()));

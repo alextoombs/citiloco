@@ -1,8 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/DarkGray"
     tools:context=".SplashScreen" >
 
     <!--
@@ -11,16 +11,19 @@
          TextureView, etc.
     -->
 
-<!--     <TextView
-        android:id="@+id/citychoicestaticTV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/title_splash"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" /> -->
+	
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/background3" />
+        
+        <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:fitsSystemWindows="true" >
 
           <TimePicker
               android:id="@+id/pmTimePicker"
@@ -35,7 +38,8 @@
               android:layout_height="wrap_content"
               android:layout_below="@+id/minCostTv"
               android:layout_toRightOf="@+id/minCostTv"
-              android:text="@string/amTimePrompt" />
+              android:text="@string/amTimePrompt" 
+              android:textColor="@color/White"/>
 
           <Button
               android:id="@+id/sendButton"
@@ -44,7 +48,8 @@
               android:layout_alignParentBottom="true"
               android:layout_alignParentLeft="true"
               android:layout_alignParentRight="true"
-              android:text="@string/sendButtonText" />
+              android:text="@string/sendButtonText"
+              android:textColor="@color/White" />
 
           <SeekBar
               android:id="@+id/costSlider"
@@ -61,35 +66,8 @@
               android:layout_height="wrap_content"
               android:layout_alignRight="@+id/promptAmTimeTv"
               android:layout_below="@+id/amTimePicker"
-              android:text="@string/pmTimePrompt" />
-
-          <TextView
-              android:id="@+id/maxCostTv"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_above="@+id/promptAmTimeTv"
-              android:layout_alignParentRight="true"
-              android:text="@string/maxCost"
-              android:textAppearance="?android:attr/textAppearanceMedium" />
-
-          <TextView
-              android:id="@+id/minCostTv"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_below="@+id/costSlider"
-              android:layout_marginLeft="14dp"
-              android:text="@string/minCost"
-              android:textAppearance="?android:attr/textAppearanceMedium" />
-
-          <TextView
-              android:id="@+id/promptCostTv"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentTop="true"
-              android:layout_marginTop="47dp"
-              android:layout_toLeftOf="@+id/maxCostTv"
-              android:text="@string/costPrompt" />
+              android:text="@string/pmTimePrompt" 
+              android:textColor="@color/White"/>
 
           <TimePicker
               android:id="@+id/amTimePicker"
@@ -105,7 +83,8 @@
               android:layout_alignBottom="@+id/amTimePicker"
               android:layout_alignParentRight="true"
               android:layout_marginRight="17dp"
-              android:text="@string/tot_static" />
+              android:text="@string/tot_static" 
+              android:textColor="@color/White"/>
 
           <TextView
               android:id="@+id/totTv"
@@ -113,6 +92,40 @@
               android:layout_height="wrap_content"
               android:layout_alignRight="@+id/totStatTv"
               android:layout_below="@+id/promptPmTimeTv"
-              android:text="@string/tot_dyn" />
+              android:text="@string/tot_dyn" 
+              android:textColor="@color/White"/>
 
-</RelativeLayout>
+          <TextView
+              android:id="@+id/maxCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_above="@+id/promptAmTimeTv"
+              android:layout_alignRight="@+id/totStatTv"
+              android:text="@string/maxCost"
+              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="@color/White" />
+
+          <TextView
+              android:id="@+id/minCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@+id/costSlider"
+              android:layout_marginLeft="20dp"
+              android:text="@string/minCost"
+              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="@color/White" />
+
+          <TextView
+              android:id="@+id/promptCostTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_marginTop="24dp"
+              android:layout_toLeftOf="@+id/maxCostTv"
+              android:text="@string/costPrompt"
+              android:textColor="@color/White" />
+
+      </RelativeLayout>
+
+</FrameLayout>

@@ -1,26 +1,42 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
-    android:layout_marginTop="5dp"
+    android:background="@color/DarkGray"
     tools:context=".SplashScreen" >
 
-	<ListView
-	    android:id="@+id/schedView"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_centerVertical="true" >
-	</ListView>
-	
-    <Button
-        android:id="@+id/gmapsButton"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/gmaps_title" />
+        android:layout_gravity="center_horizontal"
+ 		android:layout_marginTop="10dp"
+        android:src="@drawable/background4" />
     
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:fitsSystemWindows="true" >
+            
+		<ListView
+		    android:id="@+id/schedView"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_centerVertical="true" 
+		    android:textColor="@color/White">
+		</ListView>
+		
+	    <Button
+	        android:id="@+id/gmapsButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:text="@string/gmaps_title" 
+	        android:textColor="@color/White"/>
+    </RelativeLayout>
+    
+</FrameLayout>

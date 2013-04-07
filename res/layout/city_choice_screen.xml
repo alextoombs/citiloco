@@ -1,8 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/DarkGray"
     tools:context=".SplashScreen" >
 
     <!--
@@ -15,7 +15,19 @@
          This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows.
     -->
+    <ImageView
+          android:id="@+id/imageView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal" 
+          android:layout_marginTop="10dp"
+          android:src="@drawable/background2" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" >
+        
       <TextView
           android:id="@+id/areYouTv"
           android:layout_width="wrap_content"
@@ -24,27 +36,8 @@
           android:layout_centerHorizontal="true"
           android:layout_marginTop="32dp"
           android:text="@string/choiceQuestion"
+          android:textColor="@color/White"
           android:textSize="20sp" />
-
-      <Button
-          android:id="@+id/thisCityButton"
-          android:layout_width="150dp"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/areYouTv"
-          android:layout_marginTop="22dp"
-          android:text="@string/this_city_button" />
-
-      <Button
-          android:id="@+id/planCityButton"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/thisCityButton"
-          android:layout_marginTop="18dp"
-          android:text="@string/plan_city_button" />
 
       <TextView
           android:id="@+id/ccLocTv"
@@ -54,6 +47,28 @@
           android:layout_centerHorizontal="true"
           android:layout_marginTop="50dp"
           android:text="@string/default_loc"
+          android:textColor="@color/White"
           android:textSize="16sp" />
 
-</RelativeLayout>
+      <Button
+          android:id="@+id/planCityButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/thisCityButton"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="58dp"
+          android:text="@string/plan_city_button" />
+
+      <Button
+          android:id="@+id/thisCityButton"
+          android:layout_width="150dp"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/planCityButton"
+          android:layout_alignRight="@+id/planCityButton"
+          android:layout_below="@+id/areYouTv"
+          android:layout_marginTop="30dp"
+          android:text="@string/this_city_button" />
+
+      </RelativeLayout>
+
+</FrameLayout>
